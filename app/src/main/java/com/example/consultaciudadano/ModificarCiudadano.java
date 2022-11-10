@@ -86,9 +86,13 @@ public class ModificarCiudadano extends AppCompatActivity {
         txtLugarER.setText(datos.split(" ")[6]);
         txtFechaNR.setText(datos.split(" ")[7]);
         txtLugarNR.setText(datos.split(" ")[8]);
-        txtRHR.setText(datos.split(" ")[9]);
-        txtGrupoSanR.setText(datos.split(" ")[11]);
-        txtEstaturaR.setText(datos.split(" ")[12]);
+
+        Bundle recibeF = getIntent().getExtras();
+        String datosF = recibeF.getString("datosF");
+
+        txtRHR.setText(datosF.split(" ")[0]);
+        txtGrupoSanR.setText(datosF.split(" ")[1]);
+        txtEstaturaR.setText(datosF.split(" ")[2]);
 
         btnAceptarM = findViewById(R.id.btnAceptarM);
         btnAceptarM.setOnClickListener(new View.OnClickListener() {

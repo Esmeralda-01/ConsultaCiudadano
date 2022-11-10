@@ -72,7 +72,7 @@ public class HomeAdmin extends AppCompatActivity {
         btnReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           // Toast.makeText(getApplicationContext(),txtNoIdD.getText().toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),txtNoIdD.getText().toString(), Toast.LENGTH_SHORT).show();
                 Bundle enviarId = new Bundle();
                 enviarId.putString("noId", txtNoIdD.getText().toString());
                 Intent i = new Intent(getApplicationContext(), DatosCiudadano.class);

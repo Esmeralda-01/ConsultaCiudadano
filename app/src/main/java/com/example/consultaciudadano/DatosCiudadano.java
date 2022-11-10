@@ -31,6 +31,7 @@ public class DatosCiudadano extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_ciudadano);
+
         txtNombresC = findViewById(R.id.txtNombresC);
         txtApellidosC = findViewById(R.id.txtApellidosC);
         txtNoIdC = findViewById(R.id.txtNoIdC);
@@ -85,12 +86,18 @@ public class DatosCiudadano extends AppCompatActivity {
                                 +txtFechaEC.getText().toString()+" "
                                 +txtLugarEC.getText().toString()+" "
                                 +txtFechaNC.getText().toString()+" "
-                                +txtLugarNC.getText().toString()+" "
-                                +txtRHC.getText().toString()+" "
-                                +txtGrupoSanC.getText().toString()+" "
-                                +txtEstaturaC.getText().toString());
+                                +txtLugarNC.getText().toString());
+
+                                Bundle enviarDatosF = new Bundle();
+                                enviarDatosF.putString("datosF", txtRHC.getText().toString()+" "
+                                        +txtGrupoSanC.getText().toString()+" "
+                                        +txtEstaturaC.getText().toString());
+
                                 Intent i = new Intent(getApplicationContext(), ModificarCiudadano.class);
+
                                 i.putExtras(enviarDatos);
+                                i.putExtras(enviarDatosF);
+
                                 startActivity(i);
                             }
                         });
@@ -118,7 +125,7 @@ public class DatosCiudadano extends AppCompatActivity {
         // showCustomToast(getApplicationContext(),id, Toast.LENGTH_LONG);
         String url = "https://antecedentes--back.herokuapp.com/api/borrar?identificacion="+id;
         RequestQueue queue = Volley.newRequestQueue(DatosCiudadano.this);
-        StringRequest request = new StringRequest(Request.Method.DELETE, url, new com.android.volley.Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
